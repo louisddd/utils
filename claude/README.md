@@ -44,7 +44,7 @@ Référence : [documentation officielle des output styles](https://code.claude.c
 - **Les termes et les temps conservent leur fonction** : vérifier, valider, lancer et terminer restent distincts ; le conditionnel et la chronologie restent disponibles.
 - **L'agent accomplit sa part autorisée** avant de demander une décision. Une tâche terminée ne produit pas une nouvelle microtâche artificielle.
 - **Les résultats gardent leur portée** : observation, interprétation et hypothèse ; exploration et évaluation indépendante ; coûts inclus et omis.
-- **Les rappels suivent le besoin** : reprise après interruption, transition, tâche longue. Aucun plan répété ni format à cinq rubriques imposé à chaque message.
+- **Les rappels suivent le besoin** : contexte après une interruption, définition des notions qui portent l'explication et liens explicites avec la conclusion. Une notion déjà définie peut être rappelée. Aucun plan répété ni glossaire systématique n'est imposé.
 
 Le style reste indépendant des conventions propres à un projet : il ne fixe ni seuil statistique, ni coupure temporelle, ni protocole de promotion, ni budget, ni lieu d'exécution. Les instructions du projet décident de ces éléments.
 
@@ -70,7 +70,19 @@ Dans une réponse réelle, le résultat chiffré, la période et l'artefact vér
 
 **Comparaison de modèles**
 
-> Sur le même jeu de validation, l'AUC passe de 0,81 à 0,83. L'écart observé est de 0,02 ; son incertitude n'a pas été estimée. Ce résultat ne suffit pas à établir une amélioration reproductible.
+> Le score AUC ROC mesure la capacité du modèle à classer les cas positifs au-dessus des cas négatifs. Sur le même jeu de validation, ce score passe de 0,81 à 0,83. L'écart observé est de 0,02 ; son incertitude n'a pas été estimée. Ce résultat ne suffit pas à établir une amélioration reproductible.
+
+**Rappeler une notion indispensable à la conclusion**
+
+> Ce résultat ne constitue pas une confirmation indépendante.
+>
+> Un jeu de test réservé sert à évaluer un modèle sur des données qui n'ont guidé aucun choix de conception.
+>
+> Dans cet exemple, les résultats du test ont servi à choisir les paramètres. Le test a donc influencé le modèle : son score peut refléter en partie cette sélection.
+>
+> C'est ce qu'on appelle une contamination du jeu de test.
+
+Le rappel fait partie de l'explication, même si la notion a déjà été définie dans l'échange. Une demande « ultra claire » doit déclencher une reconstruction de l'explication à partir des notions utiles et de leurs liens.
 
 ## Évaluer sur son usage
 
@@ -85,6 +97,8 @@ Pour comparer au style précédent, gardez le même modèle, la même question e
 | Événement antérieur mais publication postérieure à la décision | L'ordre de disponibilité n'est pas effacé |
 | Hypothèse explicative sans test discriminant | La cause reste une hypothèse |
 | Demande simple puis reprise après interruption | Réponse courte dans le premier cas, rappel utile dans le second |
+| Notion définie plus tôt mais indispensable à la conclusion actuelle | Définition courte, rôle dans le problème et lien avec la conclusion accessibles dans la réponse |
+| Demande de réexplication « ultra claire » | Explication reconstruite à partir des notions clés, sans simple substitution de synonymes ni perte d'incertitude |
 | Vérification accessible à l'agent et déjà autorisée | L'agent la réalise au lieu de la renvoyer au lecteur |
 | Donnée réservée ou opération hors mandat | Le style n'étend pas l'autorisation |
 | Tâche entièrement terminée | Aucun choix ou travail artificiel ajouté à la fin |
